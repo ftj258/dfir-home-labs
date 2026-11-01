@@ -1,99 +1,89 @@
-# Lab 1: Memory Forensics — Malware Artifact Hunt
+# Case 1: Turnabout Memories 🧠
+### MemLabs Lab 1 memory forensics, Volatility
 
-**Status:** Complete (2 of 3 flags recovered; see Findings)
+**Evidence:** `MemoryDump_Lab1.raw` (Windows 7 SP1 x64, about 1 GB) from [MemLabs](https://github.com/stuxnet999/MemLabs)
+**Result:** 2 of 3 flags recovered
 
-## Objective
+> Flag values are blurred on purpose, as a courtesy so others can solve the lab themselves. Flags 1 and 3 were found.
 
-Analyze a memory image (MemLabs Lab 1 — a simulated "crashed computer" scenario) using
-Volatility to recover evidence of attacker activity: a malicious command, a hidden file,
-and a password-protected artifact, without access to the live system.
+---
 
-## Scenario
+## Why memory first
 
-A 1 GB Windows 7 memory dump (`MemoryDump_Lab1.raw`) representing a family member's crashed
-computer. The challenge is built around 3 hidden flags that require process analysis, command
-history recovery, file carving, credential recovery, and (attempted) memory-resident image
-extraction.
+I wanted to start my labs with a memory dump because it's volatile evidence. In a real investigation that's what we should check first, because volatile evidence can easily be lost.
+
+## The scenario
+
+A sister's computer crashed while she was working, and all that's left is a memory dump. There are three hidden flags. (A sister and a crash reminded me of the Ace Attorney case "Reunion, and Turnabout.")
+
+## What was running
+
+`windows.pslist` and `windows.cmdline` gave me the starting points:
+
+- **cmd.exe** (PID 1984), a command prompt was open
+- **mspaint.exe** (PID 2424), Paint was open when it crashed
+- **WinRAR.exe** (PID 1512), opening `C:\Users\Alissa Simpson\Documents\Important.rar`
+- **DumpIt.exe**, the tool that captured this memory, so that one is expected
+- Two separate login sessions
+
+![Running windows.cmdline](screenshots/02-cmdline.png)
+![cmd and mspaint in the process list](screenshots/01-pslist-cmd-mspaint.png)
+![WinRAR opening Important.rar](screenshots/03-cmdline-winrar-important.png)
+
+**Two users.** I noted it but didn't assume. The command was typed by SmartNet on SMARTNET-PC, while the archive was in Alissa Simpson's Documents. The process list also showed two login sessions. It could be two people or two accounts on the same machine. The memory alone doesn't say which, so I wrote down what I saw and left it at that.
+
+## Flag 1: the command prompt
+
+I ran into an error with Volatility 3, a tool limitation: `cmdscan` and `consoles` don't support this Windows 7 build (`NotImplementedError: This version of Windows is not supported: 6.1 15.7601`). So I had to download Volatility 2.6 and run cmdscan again.
+
+That was a speed bump, where I remembered to slow down but keep going and not stop altogether. It taught me that the newest version isn't always the best version.
+
+![Volatility 3 cmdscan error](screenshots/04-vol3-cmdscan-error.png)
+![Volatility 3 consoles error](screenshots/05-vol3-consoles-error.png)
+
+In Volatility 2.6, `cmdscan` showed one typed command, `St4G3$1` ("Stage 1"), and `consoles` showed what was printed after it: a Base64 string. Base64 is encoding, not encryption, so I decoded it in PowerShell and got Flag 1.
+
+![Flag 1 decoded (blurred)](screenshots/08-flag1-base64-decoded.png)
+
+For a detective it's always a "eureka" moment when something opens up. Like I found the key to a treasure box.
+
+## Flag 3: Important.rar
+
+`windows.filescan` found `Important.rar` at three places in memory.
+
+![filescan finds Important.rar](screenshots/06-filescan-important.png)
+
+Getting it out took a few tries. First Windows couldn't display a special character in one of the filenames, so I had to force Python to use UTF-8 (`set PYTHONIOENCODING=utf-8`). Then I took a break and came back to it. `--virtaddr` didn't work, `--physaddr` did, and the file came out of memory.
+
+The archive was password protected. `hashdump` in Volatility 2.6 gave me the account hashes. Alissa Simpson's NT hash was the password, and inside was `flag3.png`.
+
+![Important.rar opened](screenshots/07-important-rar-opened.png)
+![Flag 3 (blurred)](screenshots/09-flag3-image.png)
+
+## Flag 2: Paint (not solved yet)
+
+Flag 2 is in Paint's memory. I dumped the mspaint process (`memdump -p 2424`), renamed it to `.data` and opened it in GIMP as raw image data, trying different widths and offsets to make the drawing show up.
+
+GIMP was new to me, so playing with the numbers was fun but not very productive in the end. One thing that cost me time: GIMP's offset is in pixels, not bytes, so my offsets were off by a factor of 4 until I caught it. I found a small repeating icon and a big white area that looks like the blank canvas, but couldn't line up the drawing.
+
+I'm leaving Flag 2 for now, but I will come back to it. Next time I'll search the dump for image headers instead of guessing widths and offsets.
+
+## Integrity
+
+I didn't hash the memory dump before I started. I hashed it after the analysis, so these values fix the image from now on, but they can't prove it was untouched before.
+
+| File | Hash (taken 2026-11-01 01:24:33 UTC) |
+|---|---|
+| MemoryDump_Lab1.raw | SHA-256 `88e708413898c98351d1a5a221799fc34460dfecb20e482ca5247b0b113b8cf2` |
+| | MD5 `b9fec1a443907d870cb32b048bda9380` |
+
+![Memory dump hash](screenshots/00-memorydump-hash.png)
+
+## Lessons
+
+1. The older version of Volatility worked and the newer one didn't, so never rely on just one tool version. Also, don't give up. If I had given up, I wouldn't have known the earlier version would work. Sometimes we have to explore a little.
+2. Working on a case can cloud our focus, so taking a break and coming back with a fresh mind is important. Of course, chain of custody and integrity have to stay intact. Checking the hash after coming back is one way to make sure of that.
 
 ## Tools
 
-- [Volatility 3](https://github.com/volatilityfoundation/volatility3) — used for initial
-  triage (`windows.info`, `pslist`, `cmdline`, `filescan`)
-- [Volatility 2.6](https://github.com/volatilityfoundation/volatility/wiki) (standalone) —
-  used for `consoles`, `hashdump`, and `memdump`, since Volatility 3 does not support
-  `cmdscan`/`consoles` on this Windows 7 build
-- [GIMP](https://www.gimp.org/) — used to attempt to render a process memory dump as a raw
-  bitmap image
-- Memory sample: [MemLabs Lab 1](https://github.com/stuxnet999/MemLabs)
-
-## Process
-
-1. **Identify the system and running processes**
-   ```
-   vol.exe -f MemoryDump_Lab1.raw windows.info
-   vol.exe -f MemoryDump_Lab1.raw windows.pslist
-   vol.exe -f MemoryDump_Lab1.raw windows.cmdline
-   ```
-   Confirmed the image as Windows 7 SP1 x64 and identified a Paint process (`mspaint.exe`,
-   PID 2424) and other running processes worth investigating.
-
-2. **Recover command history (Flag 1)**
-   Volatility 3 does not support `cmdscan`/`consoles` against this profile, so switched to
-   Volatility 2.6:
-   ```
-   volatility_2.6_win64_standalone.exe -f MemoryDump_Lab1.raw --profile=Win7SP1x64 consoles
-   ```
-   This surfaced a Base64-encoded string in the console history. Decoded it (CyberChef /
-   PowerShell) to recover **Flag 1**.
-
-3. **Locate and carve a hidden file**
-   ```
-   vol.exe -f MemoryDump_Lab1.raw windows.filescan | findstr /i important
-   vol.exe -f MemoryDump_Lab1.raw windows.dumpfiles --physaddr <offset> --dump-dir out
-   ```
-   Used `filescan` to locate the physical offset of `Important.rar` in memory, then
-   `dumpfiles --physaddr` to carve it out to disk. (Note: `--physaddr` is required, not
-   `--virtaddr` — the latter does not resolve correctly for this plugin.)
-
-4. **Recover account password hashes (Flag 3)**
-   ```
-   set PYTHONIOENCODING=utf-8
-   volatility_2.6_win64_standalone.exe -f MemoryDump_Lab1.raw --profile=Win7SP1x64 hashdump
-   ```
-   Dumped the SAM hashes for all local accounts. The Administrator and Guest accounts had
-   the hash for an empty password; the account relevant to the scenario (`Alissa Simpson`)
-   had a distinct NT hash. Used that NT hash as the password to open `Important.rar`,
-   which contained a password-protected `flag3.png`. Opening it recovered **Flag 3**.
-
-5. **Attempt to carve a process's memory as an image (Flag 2 — unresolved)**
-   Dumped the Paint process's private memory:
-   ```
-   volatility_2.6_win64_standalone.exe -f MemoryDump_Lab1.raw --profile=Win7SP1x64 memdump -p 2424 -D dumps
-   ```
-   Renamed the resulting `.dmp` to `.data` and attempted to load it in GIMP as raw RGBA
-   image data, scanning the ~266 MB file in large offset increments (file size ÷ 4 to
-   account for GIMP 3's pixel-based, not byte-based, offset field — a detail that cost
-   significant time before being caught). Identified several distinct regions in the dump:
-   a small (~32px) repeating icon/cursor bitmap, and a large flat white region consistent
-   with a blank canvas, but was not able to align the width/offset precisely enough to
-   render the drawn content before pausing the search.
-
-## Findings
-
-- **Flag 1:** Recovered from Base64-encoded data in Volatility 2 `consoles` output.
-- **Flag 3:** Recovered by cracking a local account's NT hash via `hashdump` and using it
-  as the decryption password for a RAR archive carved from memory, which contained the
-  final flag image.
-- **Flag 2:** Not recovered. The target data (the Paint canvas, drawn in `mspaint.exe`'s
-  process memory) was not successfully isolated at the correct width/offset during manual
-  raw-image reconstruction in GIMP. Next attempt should try a more systematic approach:
-  scanning the raw dump for BMP file-header signatures (`42 4D` / `"BM"`) with a hex
-  editor or `findstr`/`grep -a`, rather than manually guessing width/offset pairs.
-
-## What this demonstrates
-
-This mirrors memory and volatile forensics work from malware triage: pulling command
-history, carving files, and cracking credentials out of a volatile memory image without
-access to the live system or disk. It also reflects a real investigative constraint —
-not every artifact is recoverable on the first pass, and documenting a partial result
-(including the dead ends) is itself part of a forensic record.
+Volatility 3 (`windows.info`, `pslist`, `cmdline`, `filescan`, `dumpfiles`), Volatility 2.6 standalone (`cmdscan`, `consoles`, `hashdump`, `memdump`), PowerShell for Base64, WinRAR, GIMP.
