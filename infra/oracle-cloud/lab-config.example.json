@@ -1,0 +1,14 @@
+{
+  "compartmentId": "ocid1.tenancy.oc1..<your-tenancy-ocid>",
+  "subnetId": "ocid1.subnet.oc1.<region>.<your-subnet-ocid>",
+  "imageId": "ocid1.image.oc1.<region>.<ubuntu-aarch64-image-ocid>",
+  "availabilityDomains": [
+    "<prefix>:US-ASHBURN-AD-1",
+    "<prefix>:US-ASHBURN-AD-2",
+    "<prefix>:US-ASHBURN-AD-3"
+  ],
+  "sshPublicKeyPath": "C:\\Users\\<you>\\.oci\\<your-ssh-key>.pub",
+  "ocpus": 2,
+  "memoryInGBs": 12,
+  "displayName": "wazuh-siem-lab"
+}

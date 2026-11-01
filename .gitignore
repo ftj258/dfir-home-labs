@@ -1,0 +1,8 @@
+# Oracle Cloud / OCI - never commit these
+lab-config.local.json
+*.pem
+*.key
+.oci/
+oci_api_key*
+*_ssh_key*
+dfir_home_lab_plan.md
