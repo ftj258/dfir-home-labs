@@ -1,4 +1,4 @@
-# Case 1: Turnabout Memories 🧠
+# Case 1: Turnabout Memories
 ### MemLabs Lab 1 memory forensics, Volatility
 
 **Evidence:** `MemoryDump_Lab1.raw` (Windows 7 SP1 x64, about 1 GB) from [MemLabs](https://github.com/stuxnet999/MemLabs)
