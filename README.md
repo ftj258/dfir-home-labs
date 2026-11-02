@@ -1,7 +1,6 @@
-cat > README.md << 'EOF'
 # DFIR Home Labs
 
-Hands-on digital forensics and incident response cases, done with free tools and public datasets made for security training. I write each one up like an Ace Attorney case, but the work underneath is the real thing: evidence hashing, timelines, and findings I can back up.
+I love solving mysteries, so every lab here is a case: a digital crime scene, evidence to collect and verify, and a question to answer. I name them after Ace Attorney cases because that's how investigating feels to me.
 
 ## Cases
 
