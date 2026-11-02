@@ -12,9 +12,9 @@ Hands-on digital forensics and incident response cases, done with free tools and
 
 More cases are in progress and will show up here when they're finished.
 
-## Tools
+## Lab setup
 
-- [Oracle Cloud A1 retry script](tools/oracle-a1-retry/) - PowerShell script I wrote to keep retrying a free Oracle Cloud instance launch through "Out of host capacity" errors
+- [Oracle Cloud A1 retry script](cloud-lab-setup/) - PowerShell script I wrote to keep retrying a free Oracle Cloud instance launch through "Out of host capacity" errors
 
 ## Why these labs
 
