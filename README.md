@@ -13,7 +13,7 @@ More cases are in progress and will show up here when they're finished.
 
 ## Lab setup
 
-- [Oracle Cloud A1 retry script](cloud-lab-setup/) - PowerShell script I wrote to keep retrying a free Oracle Cloud instance launch through "Out of host capacity" errors
+- [Cloud lab setup](cloud-lab-setup/) - PowerShell script I wrote to get a free Oracle Cloud server when the console kept failing with "Out of host capacity"
 
 ## Why these labs
 
