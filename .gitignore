@@ -7,7 +7,3 @@ oci_api_key*
 *_ssh_key*
 dfir_home_lab_plan.md
 
-# labs in progress (kept local until done)
-03-malware-analysis/
-04-cloud-ir-aws/
-05-siem-detection-splunk/
