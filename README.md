@@ -1,7 +1,6 @@
 # DFIR Home Labs
 
-I love solving mysteries, so every lab here is a case: a digital crime scene, evidence to collect and verify, and a question to answer. I name them after Ace Attorney cases because that's how investigating feels to me.
-
+I love solving mysteries, so every lab here is a case: a digital crime scene, evidence to collect and verify, and a question to answer. The names I have given to the cases seem familiar to any ace attorney fans?
 ## Cases
 
 | Case | What happened | Evidence | Tools |
