@@ -1,18 +1,20 @@
+cat > README.md << 'EOF'
 # DFIR Home Labs
 
-Hands-on digital forensics and incident response labs, built to demonstrate practical skill beyond
-day-to-day work. Each lab uses free, publicly available tools and datasets built specifically for
-security training and research.
+Hands-on digital forensics and incident response cases, done with free tools and public datasets made for security training. I write each one up like an Ace Attorney case, but the work underneath is the real thing: evidence hashing, timelines, and findings I can back up.
 
-## Labs
+## Cases
 
-| Lab | Focus | Tools |
-| --- | --- | --- |
-| [01 - Memory Forensics](01-memory-forensics/) | Malware artifact hunting in a memory image | Volatility 3 |
-| [02 - Disk & Timeline Analysis](02-disk-timeline-analysis/) | Timeline reconstruction from a disk image | Autopsy, log2timeline/plaso |
-| [03 - Malware Analysis](03-malware-analysis/) | Dynamic analysis of a malware sample in an isolated sandbox | FLARE-VM, any.run |
-| [04 - Cloud Incident Response](04-cloud-ir-aws/) | Investigating a misconfigured AWS environment | AWS CloudTrail, flaws.cloud |
-| [05 - SIEM Detection](05-siem-detection-splunk/) | Building a detection from raw security event data | Splunk, Boss of the SOC (BOTS) dataset |
+| Case | What happened | Evidence | Tools |
+| --- | --- | --- | --- |
+| [Case 1: Turnabout Memories](01-memory-forensics/turnabout-memories/) | A computer crashed with something hidden in memory | Windows 7 memory image (MemLabs Lab 1) | Volatility 3, Volatility 2.6 |
+| [Case 2: Turnabout Spreadsheet](02-disk-timeline-analysis/turnabout-spreadsheet/) | A confidential company spreadsheet ended up online | Windows XP disk image (M57-Jean) | Autopsy |
+
+More cases are in progress and will show up here when they're finished.
+
+## Tools
+
+- [Oracle Cloud A1 retry script](tools/oracle-a1-retry/) - PowerShell script I wrote to keep retrying a free Oracle Cloud instance launch through "Out of host capacity" errors
 
 ## Why these labs
 
