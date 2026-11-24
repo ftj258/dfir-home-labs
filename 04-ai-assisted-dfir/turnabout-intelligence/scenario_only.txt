@@ -1,0 +1,6 @@
+M57.biz is a small start-up. A few weeks after the company was founded, a
+confidential spreadsheet listing the names, Social Security numbers, and
+salaries of its employees appeared on a competitor's public website. Only
+Jean's laptop held a copy of that file. Jean says she does not know how the
+data left her machine and believes she was hacked. Determine how the data
+was stolen — or whether Jean is less innocent than she claims.

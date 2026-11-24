@@ -7,6 +7,8 @@ I love solving mysteries, so every lab here is a case: a digital crime scene, ev
 | --- | --- | --- | --- |
 | [Case 1: Turnabout Memories](01-memory-forensics/turnabout-memories/) | A computer crashed with something hidden in memory | Windows 7 memory image (MemLabs Lab 1) | Volatility 3, Volatility 2.6 |
 | [Case 2: Turnabout Spreadsheet](02-disk-timeline-analysis/turnabout-spreadsheet/) | A confidential company spreadsheet ended up online | Windows XP disk image (M57-Jean) | Autopsy |
+| [Case 3: Turnabout Sauce](03-incident-response/turnabout-sauce/) | An internet-exposed domain controller was breached and the intrusion spread | Windows DC + desktop (DFIR Madness) | Autopsy, Volatility 3, Wireshark, impacket |
+| [Case 4: Turnabout Intelligence](04-ai-assisted-dfir/turnabout-intelligence/) | Can AI be trusted to investigate a case? I put two models on the witness stand | M57-Jean evidence, re-used | Python, Google Gemini API |
 
 More cases are in progress and will show up here when they're finished.
 

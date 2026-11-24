@@ -1,0 +1,30 @@
+### Report: Case 2026-001 (Turnabout Spreadsheet)
+
+#### Summary
+Between July 19 and July 21, 2008, an external actor posing as "Alison" (using an external `gmail.com` address routed through a DreamHost server) contacted Jean User via email requesting background check information on current employees, citing a potential investor's requirement. Jean replied and attached a file (`m57biz.xls`, authored by Alison Smith, last saved by Jean) containing sensitive employee data, including names, Social Security Numbers (SSNs), and salaries. 
+
+Following this, employees (Bob) reported that their sensitive PII (SSNs and salaries) had been posted publicly on the internet. Concurrently, internal communications experienced strange anomalies, including duplicated or spoofed-appearing email threads where employees noted difficulty distinguishing between sent and received messages. Carol (the webmaster) questioned whether the database was populated with real data prematurely. Jean admitted to providing the requested file and acknowledged that their own SSN and salary details appeared online, though expressed confusion regarding the broader anomalies and denied knowingly publishing real data.
+
+---
+
+#### Attack Techniques (with ATT&CK IDs)
+Based strictly on the provided evidence, the following techniques can be mapped:
+* **Phishing / Spearphishing Service (T1566.003 / Email):** An external adversary (`tuckgorge@gmail.com`) masqueraded as internal personnel (`alison@m57.biz`) to trick Jean into disclosing internal corporate information via email.
+* **Exfiltration Over C2 Channel (T1041) / Exfiltration to Alternate Medium:** Jean exfiltrated sensitive internal employee files (`m57biz.xls` containing SSNs and salaries) as an email attachment to an external entity believed to be a colleague, but controlled by or accessible to an external actor.
+* **Data from Information Repository (T1213) / Collection:** The adversary gathered or requested compiled employee records (background check files/spreadsheets) housed within the organization. 
+* *Note on system-level techniques:* The evidence does not provide technical logs regarding how the data was posted to the internet (e.g., Web Shells, Ingress Tool Transfer), nor does it technically confirm adversary-in-the-middle or machine compromise on the host, despite user confusion over email threading. Therefore, specific host-compromise ATT&CK IDs beyond social engineering/exfiltration are **not supported** by the evidence.
+
+---
+
+#### Confidence & Gaps
+* **Confidence:** High regarding the social engineering email exchange, the transmission of the sensitive file (`m57biz.xls`) by Jean to the external Gmail-backed address, and the subsequent public exposure of employee PII.
+* **Gaps:** 
+  * The evidence brief provides observations of emails and file metadata only. It lacks system logs, web server logs, or network packet captures to determine *how* the data was posted to the internet or if the Windows XP host (`jean`) was directly compromised or manipulated via malware/machine-in-the-middle.
+  * The mechanism behind the strange email routing/threading confusion reported by Bob and Jean is not explained technically in the provided text.
+
+---
+
+#### Verdict (Conclusion): Is Jean Guilty?
+**Answer:** Based strictly on the provided evidence, **Jean is guilty of unauthorized disclosure / negligence** (exfiltrating and sending confidential employee records containing SSNs and salaries to an unverified external address), but the evidence **does not support** a conclusion that Jean acted with malicious intent or knowingly published the data to the internet. 
+
+* **Why:** The email timeline proves Jean willingly attached and sent `m57biz.xls` (containing sensitive employee PII) to an external attacker masquerading as Alison (`tuckgorge@gmail.com`). However, Jean expressed confusion throughout the incident ("I'm confused", "What are you talking about? I'd never use real data for this"), believed they were communicating with legitimate internal staff, and was seemingly unaware that the data was being posted publicly until notified by other employees like Bob.

@@ -1,0 +1,7 @@
+Role: Digital forensic examiner
+
+Task: Summarize what happened, and map the attack technique(s) to MITRE ATT&CK with technique IDs. 
+
+Base your analysis only on the material provided below. If the evidence does not support a conclusion, say so explicitly. Do not assume facts that are not present.
+
+Report Templated: Summary, Attack techniques ( with ATT&CK IDs), Confidence & gaps, Verdict(conclusion): Answer the question - Is Jean Guilty?

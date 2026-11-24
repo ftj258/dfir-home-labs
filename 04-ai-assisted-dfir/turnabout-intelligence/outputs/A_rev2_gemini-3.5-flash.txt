@@ -1,0 +1,35 @@
+### Summary
+
+Based strictly on the provided email timeline and file metadata:
+
+1. **Initial Context & Setup**: On July 19, 2008, Jean User (`jean@m57.biz`) and Alison Smith (`alison@m57.biz`) exchanged emails regarding email address configurations and an initial request for employee background checks for a potential investor.
+2. **Spearphishing Attack**: On July 20, 2008 at 01:22:45 UTC, Jean received an urgent email with the subject *"Please send me the information now"*. Although the `From` header displayed `alison@m57.biz`, the full routing headers reveal the email originated from an external server (`xy.dreamhostps.com`, return path `simsong@xy.dreamhostps.com`) associated with the address `tuckgorge@gmail.com`. The sender claimed an investor was being insistent and urgently requested employee information.
+3. **Data Exfiltration via Deception**: Believing the request was legitimate, Jean replied at 01:28:00 UTC attaching `m57biz.xls`—a spreadsheet created by Alison Smith containing sensitive employee Personally Identifiable Information (PII), including names, Social Security Numbers (SSNs), and salaries.
+4. **Attacker Acknowledgment & Impact**: At 05:03:40 UTC, the external sender (`tuckgorge@gmail.com`) confirmed receipt of the file. By July 20, 23:53:19 UTC, employee Bob contacted Jean asking why his SSN was published on the Internet. Bob subsequently confirmed that Jean's own SSN and salary details had also been exposed.
+
+---
+
+### Attack Techniques (MITRE ATT&CK)
+
+* **T1598.003 — Phishing for Information: Spearphishing Service / Email**
+  * *Observation*: The adversary sent targeted spearphishing emails to Jean posing as a internal colleague (Alison) to trick her into handing over sensitive corporate information (`m57biz.xls`).
+* **T1566 — Phishing (Email Header Spoofing / Social Engineering)**
+  * *Observation*: The attacker spoofed the display header `From: alison@m57.biz` while the actual mail routing path originated from external infrastructure (`xy.dreamhostps.com` / `tuckgorge@gmail.com`).
+
+---
+
+### Confidence & Gaps
+
+* **Confidence**: **High** regarding the mechanism of data loss. The email headers explicitly confirm that Jean sent the spreadsheet to an external adversary spoofing Alison's email address.
+* **Gaps**:
+  * **Attacker Identity**: The evidence does not contain sufficient data to identify the individual operating `tuckgorge@gmail.com` or `simsong@xy.dreamhostps.com`.
+  * **Public Leak Source**: The brief does not include web server logs or external platform logs showing exactly how or by whom the SSNs were posted to the public Internet after `tuckgorge@gmail.com` received the spreadsheet.
+
+---
+
+### Verdict (Conclusion): Is Jean Guilty?
+
+**Verdict**: **Not Guilty of malicious intent.**
+
+**Reasoning**: 
+The evidence shows that Jean was the target and victim of an external social engineering / spearphishing attack. Jean released `m57biz.xls` under the honest, albeit careless, belief that she was fulfilling an urgent business request from her colleague Alison for an investor background check. There is no evidence in the provided record indicating malicious intent, collusion, financial gain, or intentional leak of data by Jean.

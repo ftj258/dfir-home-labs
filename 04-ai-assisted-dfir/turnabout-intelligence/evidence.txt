@@ -1,0 +1,260 @@
+# EVIDENCE BRIEF - Case 2026-001 (Turnabout Spreadsheet) [rev 2: + background-checks headers]
+# Observations only. No conclusions, no technique IDs, no verdict.
+# Inclusion rule: all person-to-person email 2008-07-19..21, in time order.
+#   Excluded: automated bulk mail (Google Alerts, NPR/CNN newsletters, auto-forwards),
+#   and replies whose only content was quoted text. Bodies are as exported; some are
+#   truncated (trailing '...').
+# Times are as shown in each artifact (UTC unless a header shows otherwise).
+# PII (SSNs, salaries) redacted per data-minimization.
+
+SYSTEM
+- Operating system: Windows XP SP3
+- User accounts present: jean (admin), devon (admin), Administrator
+- Host type: VMware virtual machine
+
+EMAIL TIMELINE
+
+--- 2008-07-19 23:31:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: alison@m57.biz
+Subject: which email address are you using?
+Body: Are you going to use alex@m57.biz or alison@m57.biz?
+
+--- 2008-07-19 23:32:51 UTC ---
+From: alex <alex@m57.biz>
+To: jean@m57.biz
+Subject: financial plans
+Body: Hi, Jean. Have you started putting together the financial projections yet?
+
+--- 2008-07-19 23:33:13 UTC ---
+From: alex <alex@m57.biz>
+To: ; alison@m57.biz
+Subject: RE: which email address are you using?
+Body: This one, obviously.
+
+--- 2008-07-19 23:39:57 UTC ---
+From: alison@m57.biz <alison@m57.biz>
+To: jean@m57.biz
+Subject: background checks
+Full routing headers:
+  Return-Path: <simsong@xy.dreamhostps.com>
+  X-Original-To: jean@m57.biz
+  Delivered-To: x2789967@spunkymail-mx8.g.dreamhost.com
+  Received: from smarty.dreamhost.com (sd-green-bigip-81.dreamhost.com [208.97.132.81])
+      by spunkymail-mx8.g.dreamhost.com (Postfix) with ESMTP id E32634D80F
+      for <jean@m57.biz>; Sat, 19 Jul 2008 16:39:57 -0700 (PDT)
+  Received: from xy.dreamhostps.com (apache2-xy.xy.dreamhostps.com [208.97.188.9])
+      by smarty.dreamhost.com (Postfix) with ESMTP id 6E408EE23D
+      for <jean@m57.biz>; Sat, 19 Jul 2008 16:39:57 -0700 (PDT)
+  Received: by xy.dreamhostps.com (Postfix, from userid 558838)
+      id 64C683B1DAE; Sat, 19 Jul 2008 16:39:57 -0700 (PDT)
+  Message-Id: <20080719233957.64C683B1DAE@xy.dreamhostps.com>
+Body: Jean, One of the potential investors that I've been dealing with has asked me to get a background check of our current employees. Apparently they recently...
+
+--- 2008-07-19 23:43:48 UTC ---
+From: alex <alison@m57.biz>
+To: 
+Subject: programmers
+Body: Have you heard anything yet from Alice, Bob and Carol? They were all supposed to start last week.
+
+--- 2008-07-19 23:43:48 UTC ---
+From: alex <alison@m57.biz>
+To: 
+Subject: RE: which email address are you using?
+Body: Whoops. It looks like my email was misconfigured. My email is alison@m57.biz, not alex. Sorry about that.
+
+--- 2008-07-19 23:44:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: alex
+Subject: RE: which email address are you using?
+Body: So are you going to get this email?
+
+--- 2008-07-19 23:44:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: alex
+Subject: RE: programmers
+Body: Not yet.
+
+--- 2008-07-19 23:44:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: alison@m57.biz
+Subject: RE: background checks
+Body: Sure thing.
+
+--- 2008-07-19 23:46:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: alison@m57.biz
+Subject: RE: which email address are you using?
+Body: I'm confused.
+
+--- 2008-07-19 23:46:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: alison@m57.biz
+Subject: RE: CNN.com Daily Top 10
+Body: CNN.com Daily Top 10Huh?
+
+--- 2008-07-19 23:50:19 UTC ---
+From: alex <alison@m57.biz>
+To: 
+Subject: RE: which email address are you using?
+Body: Yes, I got this email.
+
+--- 2008-07-19 23:50:20 UTC ---
+From: alex <alison@m57.biz>
+To: 
+Subject: RE: programmers
+Body: Well, make it happen.
+
+--- 2008-07-19 23:50:20 UTC ---
+From: alex <alison@m57.biz>
+To: 
+Subject: RE: background checks
+Body: What's a "sure thing." ?
+
+--- 2008-07-19 23:50:20 UTC ---
+From: alex <alison@m57.biz>
+To: 
+Subject: RE: CNN.com Daily Top 10
+Body: CNN.com Daily Top 10Sorry; I don't know why I sent that to you.
+
+--- 2008-07-19 23:50:21 UTC ---
+From: alex <alison@m57.biz>
+To: 
+Subject: RE: which email address are you using?
+Body: Please stop this email train.
+
+--- 2008-07-20 01:22:45 UTC ---
+From: alison@m57.biz <tuckgorge@gmail.com>
+To: jean@m57.biz
+Subject: Please send me the information now
+Full routing headers:
+  Return-Path: <simsong@xy.dreamhostps.com>
+  X-Original-To: jean@m57.biz
+  Delivered-To: x2789967@spunkymail-mx2.g.dreamhost.com
+  Received: from smarty.dreamhost.com (sd-green-bigip-66.dreamhost.com [208.97.132.66])
+      by spunkymail-mx2.g.dreamhost.com (Postfix) with ESMTP id 2D1DC7278E
+      for <jean@m57.biz>; Sat, 19 Jul 2008 18:22:45 -0700 (PDT)
+  Received: from xy.dreamhostps.com (apache2-xy.xy.dreamhostps.com [208.97.188.9])
+      by smarty.dreamhost.com (Postfix) with ESMTP id 138E5EE221
+      for <jean@m57.biz>; Sat, 19 Jul 2008 18:22:45 -0700 (PDT)
+  Received: by xy.dreamhostps.com (Postfix, from userid 558838)
+      id 177343B1DA8; Sat, 19 Jul 2008 18:22:45 -0700 (PDT)
+  Message-Id: <20080720012245.177343B1DA8@xy.dreamhostps.com>
+Body: Hi, Jean. I'm sorry to bother you, but I really need that information now --- this VC guy is being very insistent. Can you please reply to this email with t...
+
+--- 2008-07-20 01:28:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: alison@m57.biz
+Subject: RE: Please send me the information now
+Attachments: Yes
+Body: I've attached the information that you have requested to this email message.
+
+--- 2008-07-20 05:03:40 UTC ---
+From: alison@m57.biz <tuckgorge@gmail.com>
+To: jean@m57.biz
+Subject: Thanks!
+Body: Jean, Thanks for the file. I'll handle it from here. to: jean@m57.biz from: (alison@m57.biz) tuckgorge@gmail.com subject: Thanks! Jean, Thanks for th...
+
+--- 2008-07-20 05:04:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: alex
+Subject: RE: Obama makes first trip to Afghanistan
+Body: Why did you send all of these to me?
+
+--- 2008-07-20 05:04:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: alison@m57.biz
+Subject: RE: Thanks!
+Body: Sure thing.
+
+--- 2008-07-20 23:41:11 UTC ---
+From: AlisonM57 <alison@m57.biz>
+To: jean@m57.biz
+Subject: what is going on?
+Body: What are you doing?
+
+--- 2008-07-20 23:47:32 UTC ---
+From: AlisonM57 <alison@m57.biz>
+To: jean@m57.biz
+Subject: are you around today?
+Body: Jean, Something very strange is going on. Do you know anything about it?
+
+--- 2008-07-20 23:51:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: AlisonM57
+Subject: RE: what is going on?
+Body: I'm handling some business-trip-related stuff. any reservations you want me to make on your behalf? Ps What's this thing about Katie' Holmse's hands? What...
+
+--- 2008-07-20 23:53:19 UTC ---
+From: bob@m57.biz <bob@m57.biz>
+To: jean@m57.biz
+Subject: Hi Jean
+Body: Hi, Jean. This is Bob. I'm one of the programmers working on the project. Do you know anything about my social security number being posted on the Intern...
+
+--- 2008-07-20 23:57:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: AlisonM57
+Subject: RE: are you around today?
+Body: Like what? Network's running kind of slow. Did we have a breakin or something? Jean, Something very strange is going on. Do you know anything about it?
+
+--- 2008-07-20 23:57:03 UTC ---
+From: carol@m57.biz <carol@m57.biz>
+To: jean@m57.biz
+Subject: When is our next meeting?
+Body: Hi, Jean. This is Carol. I'm the webmaster. Is this email good for you?
+
+--- 2008-07-20 23:58:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: bob@m57.biz
+Subject: RE: Hi Jean
+Body: Hi Bob. No I've heard nothing about this. Alison just asked me a question if something weird was going on. I haven't seen anything. Hi, Jean. This is Bo...
+
+--- 2008-07-21 00:01:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: carol@m57.biz
+Subject: RE: When is our next meeting?
+Body: Sure. What's going on? A lot of people are saying weird things about potential problems with site. --J Hi, Jean. This is Carol. I'm the webmaster. Is...
+
+--- 2008-07-21 00:02:59 UTC ---
+From: bob@m57.biz <bob@m57.biz>
+To: 
+Subject: RE: Hi Jean
+Body: Jean, Thanks for the follow-up. By the way, is your SSN [SSN REDACTED] and are you really making [SALARY REDACTED]/year?
+
+--- 2008-07-21 00:04:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: bob@m57.biz
+Subject: RE: Hi Jean
+Body: Jean, Thanks for the follow-up. By the way, is your SSN [SSN REDACTED] and are you really making [SALARY REDACTED]/year? It is, and I do. What's up with that? ...
+
+--- 2008-07-21 00:10:26 UTC ---
+From: carol@m57.biz <carol@m57.biz>
+To: 
+Subject: RE: When is our next meeting?
+Body: Did you by any chance populate the database with real data? It's not ready for that yet. > Sure. What's going on? A lot of people are saying weird things ab...
+
+--- 2008-07-21 00:11:45 UTC ---
+From: bob@m57.biz <bob@m57.biz>
+To: 
+Subject: RE: Hi Jean
+Body: Jean, it is very difficult for me to tell the difference between what I'm sending to you and what you are sending back to me. Since this email might be used...
+
+--- 2008-07-21 00:45:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: carol@m57.biz
+Subject: RE: When is our next meeting?
+Body: What are you talking about? I'm confused. I'd never use real data for this. J Did you by any chance populate the database with real data? It's not ready ...
+
+--- 2008-07-21 00:46:00 UTC ---
+From: Jean User <jean@m57.biz>
+To: bob@m57.biz
+Subject: RE: Hi Jean
+Body: yes it is... is there a problem? Jean, it is very difficult for me to tell the difference between what I'm sending to you and what you are sending back to m...
+
+FILE OF INTEREST
+- Filename: m57biz.xls
+- Internal author: Alison Smith
+- Created (metadata): 2008-06-12
+- Last saved by: jean
+- Found at: attachment in Jean's outlook.pst
+- Contents (described, not pasted): employee names, SSNs, salaries

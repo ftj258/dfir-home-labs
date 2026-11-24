@@ -1,0 +1,36 @@
+### Summary
+
+Based strictly on the provided evidence, the timeline of events is as follows:
+
+1. **July 19, 2008 (23:39:57 UTC):** Alison (`alison@m57.biz`) emailed Jean (`jean@m57.biz`) stating that a potential investor requested background checks for current employees. Jean agreed to help at 23:44:00 UTC.
+2. **July 20, 2008 (01:22:45 UTC):** Jean received an email appearing to come from `alison@m57.biz`, but with an underlying address of `tuckgorge@gmail.com` and Return-Path `simsong@xy.dreamhostps.com`. The sender urgently requested the background check information for a "VC guy."
+3. **July 20, 2008 (01:28:00 UTC):** Believing the email was from Alison, Jean responded and attached a file (`m57biz.xls`), which contained employee names, Social Security numbers (SSNs), and salaries.
+4. **July 20, 2008 (05:03:40 UTC):** The attacker (`tuckgorge@gmail.com`) sent a confirmation email acknowledging receipt of the file.
+5. **July 20–21, 2008:** Employees (Bob and Carol) contacted Jean stating that employee SSNs and salary data had been posted on the Internet. Carol asked if Jean had populated a database with real data. Jean expressed confusion, stated she would never use real data for that purpose, and was unaware of how the data was leaked.
+
+---
+
+### Attack Techniques (MITRE ATT&CK)
+
+* **T1598 – Phishing for Information**
+  * *Description:* The attacker sent an email requesting sensitive employee information directly from Jean under false pretenses.
+* **T1656 – Impersonation**
+  * *Description:* The attacker set the display name and address header to `alison@m57.biz` while routing through external email infrastructure (`tuckgorge@gmail.com` / `simsong@xy.dreamhostps.com`) to impersonate a company employee.
+
+---
+
+### Confidence & Gaps
+
+* **Confidence:** High regarding the email chain, the spoofing of Alison's identity by `tuckgorge@gmail.com`, and the transmission of `m57biz.xls` by Jean in response to the phishing request.
+* **Gaps:** 
+  * The provided evidence does not show how the file contents were subsequently published to the Internet or loaded into a web database after leaving Jean's inbox.
+  * There are no system event logs, web server logs, or network traffic captures present in the evidence to analyze external threat actor activity past the email transmission.
+
+---
+
+### Verdict (Conclusion)
+
+**Is Jean Guilty?**
+**No.** 
+
+The evidence does not support a finding of malicious intent or intentional data theft by Jean. Jean was the victim of a targeted social engineering/spearphishing attack (impersonation of a co-worker). Jean released the file `m57biz.xls` under the belief that it was legitimately requested by Alison for company business.
