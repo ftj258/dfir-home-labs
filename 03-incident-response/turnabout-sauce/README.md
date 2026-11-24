@@ -344,7 +344,7 @@ Controls only work if there are policies behind them. I'd focus on three: a pass
 
 ## Tools
 
-Autopsy 4.22.1 · Volatility 3 · Wireshark · Eric Zimmerman's LECmd · impacket (secretsdump) · CrackStation · VirusTotal, AbuseIPDB, ipinfo
+Autopsy 4.22.1 · Volatility 3 · Wireshark · Eric Zimmerman's LECmd · impacket (secretsdump) · VirusTotal, AbuseIPDB, ipinfo
 
 ## Integrity
 
